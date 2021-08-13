@@ -1,5 +1,5 @@
 terraform {
   backend "gcs" {
-    bucket = "sublime-cargo-322803-tfstate"
+    bucket = "learn-terraform-322811"
   }
 }

@@ -1,5 +1,5 @@
 variable "PROJECT_ID" {
-  default = "sublime-cargo-322803"
+  default = "learn-terraform-322811"
 }
 
 variable "DEFAULT_REGION" {
