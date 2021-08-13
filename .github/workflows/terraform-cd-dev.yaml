@@ -1,0 +1,40 @@
+name: Terraform Apply Test
+
+on:
+  push:
+    branches:
+      - "develop"
+    paths:
+      - "**.tf"
+      - ".github/workflows/terraform-cd-dev.yaml"
+
+jobs:
+  develop-terraform-cd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: gcp setup
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          version: "latest"
+          project_id: ${{ secrets.PROJECT_ID }}
+          service_account_key: ${{ secrets.DEV_TERRAFORM_CREDENTIALS }}
+          export_default_credentials: true
+
+      - name: set terraform env
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.0.4
+          cli_config_credentials_token: ${{ secrets.DEV_TERRAFORM_CREDENTIALS }}
+
+      - name: init
+        id: init
+        run: |
+          terraform init
+        continue-on-error: false
+
+      - name: apply
+        id: apply
+        run: terraform apply -auto-approve
