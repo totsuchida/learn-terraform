@@ -42,8 +42,8 @@ jobs:
       - uses: actions/github-script@v4
         with:
           script: |
-            console.log(${{steps.init}})
-            console.log(${{steps.plan}})
+            console.dir(${{steps.init}})
+            console.dir(${{steps.plan}})
             /*
             github.issues.createComment({
               issue_number: context.issue.number,
