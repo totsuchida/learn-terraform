@@ -39,13 +39,7 @@ jobs:
         id: plan
         run: terraform plan -no-color
 
-      - name: Return context
-        uses: actions/github-script@v4
-        id: return_context
-        with:
-          script: return context
-
       - name: Show steps.return_context
         env:
-          RETURN_CONTEXT: ${{ toJson(steps.return_context.outputs)}}
+          RETURN_CONTEXT: ${{ toJson(steps.init.outputs)}}
         run: echo "$RETURN_CONTEXT"
