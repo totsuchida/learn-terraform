@@ -45,8 +45,9 @@ jobs:
             const body = `#### terraform init \`${{ steps.init.conclusion }}\`
             #### terraform plan \`${{ steps.plan.conclusion }}\`
 
-            <details><summary>Plan Result</summary>
-            \`\`\` ${{ steps.plan.outputs.stdout }} \`\`\`
+            <details>
+              <summary>Plan Result</summary>
+              \`\`\`${{ steps.plan.outputs.stdout }}\`\`\`
             </details>
 
             `;
