@@ -42,10 +42,13 @@ jobs:
       - uses: actions/github-script@v4
         with:
           script: |
-            const body = `#### terraform init ${{ steps.init.conclusion }}
-            #### terraform plan ${{ steps.plan.conclusion }}
+            const body = `#### terraform init \`${{ steps.init.conclusion }}\`
+            #### terraform plan \`${{ steps.plan.conclusion }}\`
 
+            <details><summary>Plan Result</summary>
             \`\`\` ${{ steps.plan.outputs.stdout }} \`\`\`
+            </details>
+
             `;
             
             github.issues.createComment({
