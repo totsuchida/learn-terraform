@@ -44,10 +44,12 @@ jobs:
           script: |
             console.log(steps.init)
             console.log(steps.plan)
-            # github.issues.createComment({
-            #   issue_number: context.issue.number,
-            #   owner: context.repo.owner,
-            #   repo: context.repo.repo,
-            #   body: 
-            # })
+            /*
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 
+            })
+            */
           result-encoding: string
