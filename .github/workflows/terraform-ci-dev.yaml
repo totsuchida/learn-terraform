@@ -46,7 +46,6 @@ jobs:
           script: return context
 
       - name: Show steps.return_context
-        uses: actions/github-script@v4
         env:
           RETURN_CONTEXT: ${{ toJson(steps.return_context.outputs)}}
         run: echo "$RETURN_CONTEXT"
