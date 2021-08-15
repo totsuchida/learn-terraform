@@ -45,7 +45,7 @@ jobs:
             const body = `#### terraform init ${{ steps.init.conclusion }}
             #### terraform plan ${{ steps.plan.conclusion }}
 
-            \`\`\` ${{ steps.plan.output }} \`\`\`
+            \`\`\` ${{ steps.plan.outputs.stdout }} \`\`\`
             `;
             
             github.issues.createComment({
