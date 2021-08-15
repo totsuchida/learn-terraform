@@ -39,7 +39,13 @@ jobs:
         id: plan
         run: terraform plan -no-color
 
-      - name: Show steps.return_context
-        env:
-          RETURN_CONTEXT: ${{ toJson(steps.init)}}
-        run: echo "$RETURN_CONTEXT"
+      - uses: actions/github-script@v4
+        script: |
+          const body = `#### terraform init ${{ steps.init.conclusion }}`;
+          
+          github.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: body
+          })
