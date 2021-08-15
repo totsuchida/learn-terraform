@@ -45,20 +45,8 @@ jobs:
         with:
           script: return context
 
-      - uses: actions/github-script@v4
+      - name: Show steps.return_context
+        uses: actions/github-script@v4
         env:
           RETURN_CONTEXT: ${{ toJson(steps.return_context.outputs)}}
         run: echo "$RETURN_CONTEXT"
-        # with:
-        #   script: |
-        #     console.log(${{steps.init}})
-        #     console.log(${{steps.plan}})
-        #     /*
-        #     github.issues.createComment({
-        #       issue_number: context.issue.number,
-        #       owner: context.repo.owner,
-        #       repo: context.repo.repo,
-        #       body: 
-        #     })
-        #     */
-        #   result-encoding: string
