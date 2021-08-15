@@ -40,10 +40,12 @@ jobs:
         run: terraform plan -no-color
 
       - uses: actions/github-script@v4
-        id: set-result
         with:
-          script: return "Hello!"
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 Thanks for reporting!'
+            })
           result-encoding: string
-
-      - name: Get result
-        run: echo "${{steps.set-result.outputs.result}}"
