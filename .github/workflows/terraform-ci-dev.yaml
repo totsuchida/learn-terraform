@@ -1,11 +1,12 @@
-name: Terraform Workflow Test
+name: Terraform Plan
 on:
-  push:
+  pull_request:
     branches:
       - "develop"
     paths:
       - "**.tf"
       - ".github/workflows/terraform-ci-dev.yaml"
+    types: [opened, synchronize]
 
 jobs:
   terraform-ci:
@@ -38,3 +39,11 @@ jobs:
         id: plan
         run: terraform plan -no-color
 
+      - uses: actions/github-script@v4
+        id: set-result
+        with:
+          script: return "Hello!"
+          result-encoding: string
+
+      - name: Get result
+        run: echo "${{steps.set-result.outputs.result}}"
