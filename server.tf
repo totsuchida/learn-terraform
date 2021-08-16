@@ -1,6 +1,6 @@
 resource "google_compute_instance" "test-server" {
   name         = "test"
-  machine_type = "e2-micro"
+  machine_type = "e2-medium"
   zone         = "asia-northeast1-b"
 
   boot_disk {
