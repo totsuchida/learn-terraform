@@ -1,4 +1,4 @@
-resource "google_compute_instance" "default" {
+resource "google_compute_instance" "test-server" {
   name         = "test"
   machine_type = "f1-micro"
   zone         = "asia-northeast1-b"
