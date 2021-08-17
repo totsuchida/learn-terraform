@@ -3,6 +3,7 @@ resource "google_compute_instance" "test-server" {
   machine_type              = "f1-micro"
   allow_stopping_for_update = true
   zone                      = "asia-northeast1-b"
+  tags                      = ["test-server"]
 
   boot_disk {
     initialize_params {

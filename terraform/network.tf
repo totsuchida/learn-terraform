@@ -22,13 +22,13 @@ resource "google_compute_firewall" "test-firewall" {
   name    = "test-firewall"
   network = google_compute_network.test-network.name
 
-  // allow {
-  //   protocol = "icmp"
-  // }
+  priority = 1000
+
+  source_ranges = ["0.0.0.0/0"]
+  target_tags   = ["test-server"]
 
   allow {
-    protocol = "tcp"
-    ports    = ["80"]
+    protocol = "icmp"
   }
 
   lifecycle {
