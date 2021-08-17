@@ -1,20 +1,17 @@
 resource "google_compute_instance" "test-server" {
-  name         = "test"
-  machine_type = "e2-medium"
-  zone         = "asia-northeast1-b"
+  name                      = "test-server"
+  machine_type              = "f1-micro"
+  allow_stopping_for_update = true
+  zone                      = "asia-northeast1-b"
 
   boot_disk {
     initialize_params {
-      image = "ubuntu-os-cloud/ubuntu-2104"
+      image = "ubuntu-os-cloud/ubuntu-1804-lts"
     }
   }
 
-  scratch_disk {
-    interface = "SCSI"
-  }
-
   network_interface {
-    network = "default"
+    subnetwork = google_compute_subnetwork.test-subnetwork1.name
 
     access_config {
 
