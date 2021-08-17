@@ -31,6 +31,11 @@ resource "google_compute_firewall" "test-firewall" {
     protocol = "icmp"
   }
 
+  allow {
+    protocol = "tcp"
+    ports    = ["22", "80"]
+  }
+
   lifecycle {
     create_before_destroy = true
   }
