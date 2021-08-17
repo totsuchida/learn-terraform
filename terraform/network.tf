@@ -18,13 +18,13 @@ resource "google_compute_subnetwork" "test-subnetwork1" {
   }
 }
 
-resource "google_compute_firewall" "default" {
+resource "google_compute_firewall" "test-firewall" {
   name    = "test-firewall"
   network = google_compute_network.test-network.name
 
-  allow {
-    protocol = "icmp"
-  }
+  // allow {
+  //   protocol = "icmp"
+  // }
 
   allow {
     protocol = "tcp"
