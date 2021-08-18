@@ -10,7 +10,7 @@ resource "google_cloud_run_service" "cloud-run-test" {
           limits = { "cpu" : "1000m", "memory" : "128Mi" }
         }
       }
-      service_account_name  = google_service_account.cloud-run-sa.email
+      service_account_name = google_service_account.cloud-run-sa.email
     }
   }
 
