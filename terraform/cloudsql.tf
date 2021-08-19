@@ -11,6 +11,6 @@ resource "google_sql_database_instance" "cloud-sql-test-instance" {
   settings {
     tier              = "db-f1-micro"
     availability_type = "ZONAL"
-    disk_size         = 1
+    disk_size         = 10
   }
 }
