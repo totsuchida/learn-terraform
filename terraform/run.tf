@@ -12,6 +12,11 @@ resource "google_cloud_run_service" "cloud-run-test" {
       }
       service_account_name = google_service_account.cloud-run-sa.email
     }
+    metadata {
+      annotations = {
+        "run.googleapis.com/cloudsql-instances" = google_sql_database_instance.cloud-sql-test-instance.connection_name
+      }
+    }
   }
 
 }
