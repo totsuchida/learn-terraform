@@ -14,7 +14,7 @@ resource "google_cloud_run_service" "cloud-run-test" {
     }
     metadata {
       annotations = {
-        "run.googleapis.com/cloudsql-instances" = google_sql_database_instance.sql-test-instance.connection_name
+        "run.googleapis.com/cloudsql-instances"   = google_sql_database_instance.sql-test-instance.connection_name
         "run.googleapis.com/vpc-access-connector" = google_vpc_access_connector.test-network-connector.name
       }
     }
