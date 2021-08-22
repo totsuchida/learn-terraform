@@ -49,7 +49,9 @@ jobs:
 
             <details>
               <summary>Plan Result</summary>
-              \`\`\`${{ steps.plan.outputs.stdout }}\`\`\`
+              \`\`\`¥n
+              ${{ steps.plan.outputs.stdout }}
+              \`\`\`
             </details>
 
             `;
