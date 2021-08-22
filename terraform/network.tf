@@ -38,11 +38,11 @@ resource "google_vpc_access_connector" "test-network-connector" {
   machine_type = "f1-micro"
 }
 
-resource "google_compute_firewall" "deny-all-from-vpc" {
-  name = "deny-all-from-vpc"
+resource "google_compute_firewall" "deny-all-from-vpcconnector" {
+  name = "deny-all-from-vpcconnector"
   network = google_compute_network.test-network.name
 
-  priority = 999
+  priority = 990
 
   deny {
     protocol = "all"
@@ -53,7 +53,21 @@ resource "google_compute_firewall" "deny-all-from-vpc" {
 
 }
 
+resource "google_compute_firewall" "allow-http-from-vpcconnector" {
+  name = "allow-http-from-vpcconnector"
+  network = google_compute_network.test-network.name
 
+  priority = 980
+
+  allow {
+    protocol = "tcp"
+    ports = ["80", "443"]
+  }
+
+  source_tags = ["vpc-connector-asia-northeast1-test-network-connector"]
+  direction = "INGRESS"
+
+}
 
 resource "google_compute_firewall" "test-firewall" {
   name    = "test-firewall"
