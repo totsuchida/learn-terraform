@@ -28,6 +28,7 @@ resource "google_compute_subnetwork" "test-connector-subnet" {
 resource "google_vpc_access_connector" "test-network-connector" {
   provider = google-beta
   name     = "test-network-connector"
+  # tags = ["${var.REGION}-test-network-connector"]
 
   project = var.PROJECT_ID
   region  = var.DEFAULT_REGION
@@ -36,6 +37,22 @@ resource "google_vpc_access_connector" "test-network-connector" {
   }
   machine_type = "f1-micro"
 }
+
+resource "google_compute_firewall" "deny-all-from-vpc" {
+  name = "deny-all-from-vpc"
+  network = google_compute_network.test-network.name
+
+  priority = 999
+
+  deny {
+    protocol = "all"
+  }
+
+  source_tags = ["vpc-connector-asia-northeast1-test-network-connector"]
+  direction = "INGRESS"
+
+}
+
 
 
 resource "google_compute_firewall" "test-firewall" {
