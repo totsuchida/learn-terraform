@@ -39,7 +39,7 @@ resource "google_vpc_access_connector" "test-network-connector" {
 }
 
 resource "google_compute_firewall" "deny-all-from-vpcconnector" {
-  name = "deny-all-from-vpcconnector"
+  name    = "deny-all-from-vpcconnector"
   network = google_compute_network.test-network.name
 
   priority = 990
@@ -49,23 +49,23 @@ resource "google_compute_firewall" "deny-all-from-vpcconnector" {
   }
 
   source_tags = ["vpc-connector-asia-northeast1-test-network-connector"]
-  direction = "INGRESS"
+  direction   = "INGRESS"
 
 }
 
 resource "google_compute_firewall" "allow-http-from-vpcconnector" {
-  name = "allow-http-from-vpcconnector"
+  name    = "allow-http-from-vpcconnector"
   network = google_compute_network.test-network.name
 
   priority = 980
 
   allow {
     protocol = "tcp"
-    ports = ["80", "443"]
+    ports    = ["80", "443"]
   }
 
   source_tags = ["vpc-connector-asia-northeast1-test-network-connector"]
-  direction = "INGRESS"
+  direction   = "INGRESS"
 
 }
 
