@@ -19,15 +19,18 @@ resource "google_compute_subnetwork" "test-subnetwork1" {
 }
 
 resource "google_compute_subnetwork" "test-connector-subnet" {
-  name = "test-connector-subnet"
+  name          = "test-connector-subnet"
   ip_cidr_range = "10.11.0.0/28"
-  region = var.DEFAULT_REGION
-  network = google_compute_network.test-network.id
+  region        = var.DEFAULT_REGION
+  network       = google_compute_network.test-network.id
 }
 
 resource "google_vpc_access_connector" "test-network-connector" {
   provider = google-beta
-  name = "test-network-connector"
+  name     = "test-network-connector"
+
+  project = var.PROJECT_ID
+  region  = var.DEFAULT_REGION
   subnet {
     name = google_compute_subnetwork.test-connector-subnet.name
   }

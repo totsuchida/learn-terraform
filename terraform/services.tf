@@ -4,7 +4,8 @@ locals {
     "containerregistry.googleapis.com",
     "iam.googleapis.com",
     "run.googleapis.com",
-    "sqladmin.googleapis.com"
+    "sqladmin.googleapis.com",
+    "vpcaccess.googleapis.com"
   ])
 }
 
