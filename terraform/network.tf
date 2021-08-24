@@ -66,6 +66,7 @@ resource "google_compute_firewall" "allow-http-from-vpcconnector" {
 
   source_tags = ["vpc-connector-asia-northeast1-test-network-connector"]
   direction   = "INGRESS"
+  target_tags = ["test-server"]
 
 }
 
