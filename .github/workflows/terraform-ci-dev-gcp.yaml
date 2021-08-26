@@ -1,11 +1,11 @@
-name: Terraform Plan
+name: GCP Terraform Plan
 on:
   pull_request:
     branches:
       - "develop"
     paths:
-      - "**.tf"
-      - ".github/workflows/terraform-ci-dev.yaml"
+      - "./terraform/gcp/*.tf"
+      - ".github/workflows/terraform-ci-dev-gcp.yaml"
     types: [opened, synchronize]
 
 jobs:
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./terraform/
+        working-directory: ./terraform/gcp
     steps:
       - name: checkout
         uses: actions/checkout@v2
