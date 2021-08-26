@@ -1,4 +1,4 @@
-name: Terraform Plan
+name: GCP Terraform Plan
 on:
   pull_request:
     branches:
