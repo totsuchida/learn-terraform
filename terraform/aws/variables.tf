@@ -1,3 +1,3 @@
 variable "DEFAULT_REGION" {
-  default = "ap-northeast1"
+  default = "ap-northeast-1"
 }
