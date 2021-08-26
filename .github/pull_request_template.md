@@ -11,8 +11,8 @@
 
 ## セルフチェック
 
-[] ローカルで`terraform plan`を実行してエラーが出なかったか
-[] `terraform fmt`を実行済みか
+[ ] ローカルで`terraform plan`を実行してエラーが出なかったか
+[ ] `terraform fmt`を実行済みか
 
 ## 特に気になっている部分
 
