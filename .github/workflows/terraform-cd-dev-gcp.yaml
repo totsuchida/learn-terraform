@@ -5,15 +5,15 @@ on:
     branches:
       - "develop"
     paths:
-      - "**.tf"
-      - ".github/workflows/terraform-cd-dev.yaml"
+      - "./terraform/gcp/*.tf"
+      - ".github/workflows/terraform-cd-dev-gcp.yaml"
 
 jobs:
   develop-terraform-cd:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./terraform/
+        working-directory: ./terraform/gcp
     steps:
       - name: checkout
         uses: actions/checkout@v2
